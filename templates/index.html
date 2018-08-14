@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slack App on JS</title>
+	<script>
+		
+function check() {
+
+    // stored data from the register-form
+    var count = localStorage.getItem('count');
+
+ 
+    var storedName = localStorage.getItem('name');
+    var storedPw = localStorage.getItem('pw');
+
+    // entered data from the login-form
+    var userName = document.getElementById('userName').value;
+    var userPw = document.getElementById('userPw').value;
+
+
+
+    // check if stored data from register-form is equal to data from login form
+    if(userName == storedName && userPw == storedPw) {
+        alert('Logged In');
+    }else {
+
+       	localStorage.setItem('name', userName);
+    	localStorage.setItem('pw', userPw);
+    	count++;
+    	alert('Registered');
+    	document.getElementById('users_registered').innerHTML = "Users Registered = " + count;
+    	localStorage.setItem('count' , count)
+
+    }
+}
+        </script>
+</head>
+<body>
+<h1>Slack App on JS</h1>
+<h2>Welcome to The App</h2>
+<span id = "users_registered">
+<h3>Users Registered = </h3>
+</span>
+<h1>Login Page</h1>
+        <form name="login">
+            Username<input type="text" name="userid" id = "userName"/>
+            Password<input type="password" name="pswrd" id = "userPw"/>
+            <input type="button" onclick="check(this.form)" value="Login"/>
+            <input type="reset" value="Cancel"/>
+        </form>
+
+</body>
+</html>
+
